@@ -60,7 +60,7 @@ class _First_ScreeenState extends State<First_Screeen> {
                           letterSpacing: 1.5,
                           color: kWhite,
                           fontWeight: FontWeight.w900,
-                          fontSize: mqh / 20)),
+                          fontSize: mqh / 24)),
                 ),
               )
           ),
@@ -75,35 +75,39 @@ class _First_ScreeenState extends State<First_Screeen> {
                           color: kWhite,
                           letterSpacing: 1,
                           fontWeight: FontWeight.w700,
-                          fontSize: mqh / 40)
+                          fontSize: mqh / 32)
                   ),
                 ),
               )
           ),
           Positioned(
             top: mqh * 2010 / 2340,
-            left: mqw / 2.2,
-            child: InkWell(
-              onTap: (){
-                playSound(5);
-              },
-              child: Container(
-                height: mqh * 120 / 2340,
-                width: mqw / 10,
-                decoration: BoxDecoration(
-                    color: kBlue, borderRadius: BorderRadius.circular(6)),
-                child:  Center(
-                    child: Text(
-                  'App',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      fontWeight: FontWeight.w800,
-                      fontSize: mqh / 70,
-                      letterSpacing: 1,
-                      color: kWhite),
-                )),
+            child: Container(
+              width: mqw,
+              child: Center(
+                child: InkWell(
+                  onTap: (){
+                    playSound(5);
+                  },
+                  child: Container(
+                    height: mqh * 120 / 2340,
+                    width: mqh / 9,
+                    decoration: BoxDecoration(
+                        color: kBlue, borderRadius: BorderRadius.circular(6)),
+                    child:  Center(
+                        child: Text(
+                          'App',
+                          style: TextStyle(
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w800,
+                              fontSize: mqh / 50,
+                              letterSpacing: 1,
+                              color: kWhite),
+                        )),
+                  ),
+                ),
               ),
-            ),
+            )
           ),
         ],
       ),

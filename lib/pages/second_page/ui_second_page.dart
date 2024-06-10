@@ -162,15 +162,16 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                       fontFamily: 'Inter',
                       color: kBlue,
                       fontWeight: FontWeight.w900,
-                      fontSize: mqh / 25),
+                      fontSize: mqh / 14),
                 )),
           ),
           SizedBox(height: mqh / 30),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: mqw * 100 / 1080),
+            padding: EdgeInsets.symmetric(horizontal: mqw * 50 / 1080),
             child: mqw > 768 ? Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                SizedBox(width: 0,),
                 Column(
                   children: [
                     Stack(

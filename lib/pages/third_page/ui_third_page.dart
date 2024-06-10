@@ -37,7 +37,7 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                 'FAQ',
                 style: TextStyle(
                     fontFamily: 'Inter',
-                    color: kBlue, fontWeight: FontWeight.w900, fontSize: mqh / 20),
+                    color: kBlue, fontWeight: FontWeight.w900, fontSize: mqh / 19),
                            ),
              ),
             SizedBox(height: mqh * 150 / 2340),
@@ -60,7 +60,7 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                                 fontFamily: 'Inter',
                                 color: kBlue,
                                 fontWeight: FontWeight.w600,
-                                fontSize: mqh / 40),
+                                fontSize: mqh / 35),
                           ),
                           children: [
                             Container(
@@ -77,6 +77,7 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                                 ),
                               ),
                             ),
+                            SizedBox(height: mqh / 10,)
                           ],
                         ),
                       ),
