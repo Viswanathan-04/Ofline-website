@@ -148,673 +148,676 @@ class _Problem_ScreenState extends State<Problem_Screen> {
   Widget build(BuildContext context) {
     double mqh = MediaQuery.of(context).size.height;
     double mqw = MediaQuery.of(context).size.width;
-    return SizedBox(
-      width: double.infinity,
-      child: Column(
-        children: [
-          Padding(
-            padding:
-            EdgeInsets.only(top: mqh * 120 / 2340, bottom: mqh * 45 / 2340),
-            child:  Center(
-                child: Text(
-                  'Problems',
-                  style: TextStyle(
-                      fontFamily: 'Inter',
-                      color: kBlue,
-                      fontWeight: FontWeight.w900,
-                      fontSize: mqw > 768 ? mqh / 14 : mqh / 20),
-                )),
-          ),
-          SizedBox(height: mqh / 30),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: mqw * 50 / 1080),
-            child: mqw >= 768 ? Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                SizedBox(width: 0,),
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: mqh * 1150 / 2340,
-                          width: mqw * 260 / 1080,
-                          decoration: BoxDecoration(
-                              color: kWhite,
-                              borderRadius: BorderRadius.circular(14)),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(14),
-                            child: PageView.builder(
-                                controller: _pageController1,
-                                itemCount: discoverability_image.length,
-
-                                onPageChanged: (value){
-                                  setState(() {
-                                    _activePage1 = value;
-                                  });
-                                },
-                                itemBuilder: (context, index) {
-                                  return _pages1[index];
-                                }),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: mqh * 70 / 2340,
-                          right: mqw * 60 / 1080,
-                          child:  Center(
-                            child: Text(
-                              'Discoverability',
-                              style: TextStyle(
-                                  color: kWhite,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: getResponsiveFontSize(context, 19),
-                                  // letterSpacing: 0.5,
-                                  fontFamily: 'Inter'),
+    return SingleChildScrollView(
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          children: [
+            Padding(
+              padding:
+              EdgeInsets.only(top: mqh * 120 / 2340, bottom: mqh * 45 / 2340),
+              child:  Center(
+                  child: Text(
+                    'Problems',
+                    style: TextStyle(
+                        fontFamily: 'Inter',
+                        color: kBlue,
+                        fontWeight: FontWeight.w900,
+                        fontSize: mqw > 768 ? mqh / 14 : mqh / 20),
+                  )),
+            ),
+            SizedBox(height: mqh / 25),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: mqw * 50 / 1080),
+              child: mqw >= 768 ? Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(width: 0,),
+                  Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: mqh * 1150 / 2340,
+                            width: mqw * 260 / 1080,
+                            decoration: BoxDecoration(
+                                color: kWhite,
+                                borderRadius: BorderRadius.circular(14)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(14),
+                              child: PageView.builder(
+                                  controller: _pageController1,
+                                  itemCount: discoverability_image.length,
+      
+                                  onPageChanged: (value){
+                                    setState(() {
+                                      _activePage1 = value;
+                                    });
+                                  },
+                                  itemBuilder: (context, index) {
+                                    return _pages1[index];
+                                  }),
                             ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            width: 300,
-                            // height: 100,
-                            color: Colors.transparent,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List<Widget>.generate(
-                                    _pages1.length,
-                                        (index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: InkWell(
-                                        onTap: () {
-                                          _pageController1.animateToPage(index,
-                                              duration:
-                                              const Duration(milliseconds: 500),
-                                              curve: Curves.easeInOutCubicEmphasized);
-
-                                        },
-                                        child: CircleAvatar(
-                                          radius: 4,
-                                          backgroundColor:
-                                          _activePage1 == index
-                                              ? Colors.transparent
-                                              : Colors.transparent,
-                                        ),
-                                      ),
-                                    ))),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: mqh * 160 / 2340),
-                    InkWell(
-                      onTap: (){
-                        startTimer1();
-                        playSound(2);
-                      },
-                      child: Center(
-                        child: Container(
-                          height: mqh * 122.5 / 2340,
-                          width: mqw * 60 / 1080,
-                          decoration: BoxDecoration(
-                              color: kBlue, borderRadius: BorderRadius.circular(7)),
-                          child:  Center(
-                              child: Text(
-                                'Play',
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: getResponsiveFontSize(context, 11),
-                                    letterSpacing: 0.5,
-                                    color: kWhite),
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: mqh * 1150 / 2340,
-                          width: mqw * 260 / 1080,
-                          decoration: BoxDecoration(
-                              color: kWhite,
-                              borderRadius: BorderRadius.circular(14)),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(14),
-                            child: PageView.builder(
-                                controller: _pageController2,
-                                itemCount: waiting_image.length,
-
-                                onPageChanged: (value){
-                                  setState(() {
-                                    _activePage2 = value;
-                                  });
-                                },
-                                itemBuilder: (context, index) {
-                                  return _pages2[index];
-                                }),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: mqh * 70 / 2340,
-                          left: mqw * 93 / 1080,
-                          child:  Center(
-                            child: Text(
-                              'Waiting',
-                              style: TextStyle(
-                                  color: kWhite,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: getResponsiveFontSize(context, 19),
-                                  // letterSpacing: 0.5,
-                                  fontFamily: 'Inter'),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            width: 300,
-                            // height: 100,
-                            color: Colors.transparent,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List<Widget>.generate(
-                                    _pages2.length,
-                                        (index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: InkWell(
-                                        onTap: () {
-                                          _pageController2.animateToPage(index,
-                                              duration:
-                                              const Duration(milliseconds: 500),
-                                              curve: Curves.easeInOutCubicEmphasized);
-
-                                        },
-                                        child: CircleAvatar(
-                                          radius: 4,
-                                          backgroundColor:
-                                          _activePage2 == index
-                                              ? Colors.transparent
-                                              : Colors.transparent,
-                                        ),
-                                      ),
-                                    ))),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: mqh * 160 / 2340),
-                    InkWell(
-                      onTap: (){
-                        startTimer2();
-                        playSound(4);
-                      },
-                      child: Center(
-                        child: Container(
-                          height: mqh * 122.5 / 2340,
-                          width: mqw * 60 / 1080,
-                          decoration: BoxDecoration(
-                              color: kBlue, borderRadius: BorderRadius.circular(7)),
-                          child:  Center(
-                              child: Text(
-                                'Play',
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: getResponsiveFontSize(context, 11),
-                                    letterSpacing: 0.5,
-                                    color: kWhite),
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: mqh * 1150 / 2340,
-                          width: mqw * 260 / 1080,
-                          decoration: BoxDecoration(
-                              color: kWhite,
-                              borderRadius: BorderRadius.circular(14)),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(14),
-                            child: PageView.builder(
-                                controller: _pageController3,
-                                itemCount: uncertainty_image.length,
-
-                                onPageChanged: (value){
-                                  setState(() {
-                                    _activePage3 = value;
-                                  });
-                                },
-                                itemBuilder: (context, index) {
-                                  return _pages3[index];
-                                }),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: mqh * 70 / 2340,
-                          right: mqw * 70 / 1080,
-                          child:  Center(
-                            child: Text(
-                              'Uncertainty',
-                              style: TextStyle(
-                                  color: kWhite,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: getResponsiveFontSize(context, 19),
-                                  fontFamily: 'Inter'),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            width: 300,
-                            // height: 100,
-                            color: Colors.transparent,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List<Widget>.generate(
-                                    _pages3.length,
-                                        (index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: InkWell(
-                                        onTap: () {
-                                          _pageController3.animateToPage(index,
-                                              duration:
-                                              const Duration(milliseconds: 500),
-                                              curve: Curves.easeInOutCubicEmphasized);
-
-                                        },
-                                        child: CircleAvatar(
-                                          radius: 4,
-                                          backgroundColor:
-                                          _activePage3 == index
-                                              ? Colors.transparent
-                                              : Colors.transparent,
-                                        ),
-                                      ),
-                                    ))),
-                          ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: mqh * 160 / 2340),
-                    InkWell(
-                      onTap: (){
-                        startTimer3();
-                        playSound(3);
-                      },
-                      child: Center(
-                        child: Container(
-                          height: mqh * 122.5 / 2340,
-                          width: mqw * 60 / 1080,
-                          decoration: BoxDecoration(
-                              color: kBlue, borderRadius: BorderRadius.circular(7)),
-                          child:  Center(
-                              child: Text(
-                                'Play',
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: getResponsiveFontSize(context, 11),
-                                    letterSpacing: 0.5,
-                                    color: kWhite),
-                              )),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: mqh * 0.8),
-              ],
-            ) :
-            Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: mqh * 1150 / 2340,
-                          width: mqh / 2.5,
-                          decoration: BoxDecoration(
-                              color: kWhite,
-                              borderRadius: BorderRadius.circular(14)),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(14),
-                            child: PageView.builder(
-                                controller: _pageController1,
-                                itemCount: discoverability_image.length,
-
-                                onPageChanged: (value){
-                                  setState(() {
-                                    _activePage1 = value;
-                                  });
-                                },
-                                itemBuilder: (context, index) {
-                                  return _pages1[index];
-                                }),
-                          ),
-                        ),
-                        Positioned(
-                          bottom: mqh * 70 / 2340,
-                          child:  Container(
-                            width: mqw * 0.85,
-                            child: Center(
+                          Positioned(
+                            bottom: mqh * 70 / 2340,
+                            right: mqw * 60 / 1080,
+                            child:  Center(
                               child: Text(
                                 'Discoverability',
                                 style: TextStyle(
                                     color: kWhite,
                                     fontWeight: FontWeight.w800,
-                                    fontSize: mqh / 35,
+                                    fontSize: getResponsiveFontSize(context, 19),
                                     // letterSpacing: 0.5,
                                     fontFamily: 'Inter'),
                               ),
                             ),
-                          )
-                        ),
-                        Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            width: 300,
-                            // height: 100,
-                            color: Colors.transparent,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List<Widget>.generate(
-                                    _pages1.length,
-                                        (index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: InkWell(
-                                        onTap: () {
-                                          _pageController1.animateToPage(index,
-                                              duration:
-                                              const Duration(milliseconds: 500),
-                                              curve: Curves.easeInOutCubicEmphasized);
-
-                                        },
-                                        child: CircleAvatar(
-                                          radius: 4,
-                                          backgroundColor:
-                                          _activePage1 == index
-                                              ? Colors.transparent
-                                              : Colors.transparent,
-                                        ),
-                                      ),
-                                    ))),
                           ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: mqh / 50),
-                    InkWell(
-                      onTap: (){
-                        startTimer1();
-                        playSound(2);
-                      },
-                      child: Center(
-                        child: Container(
-                          height: mqh * 122.5 / 2340,
-                          width: mqw / 8,
-                          decoration: BoxDecoration(
-                              color: kBlue, borderRadius: BorderRadius.circular(7)),
-                          child:  Center(
-                              child: Text(
-                                'Play',
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: mqh / 65,
-                                    letterSpacing: 0.5,
-                                    color: kWhite),
-                              )),
+                          Positioned(
+                            bottom: 10,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              width: 300,
+                              // height: 100,
+                              color: Colors.transparent,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List<Widget>.generate(
+                                      _pages1.length,
+                                          (index) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: InkWell(
+                                          onTap: () {
+                                            _pageController1.animateToPage(index,
+                                                duration:
+                                                const Duration(milliseconds: 500),
+                                                curve: Curves.easeInOutCubicEmphasized);
+      
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 4,
+                                            backgroundColor:
+                                            _activePage1 == index
+                                                ? Colors.transparent
+                                                : Colors.transparent,
+                                          ),
+                                        ),
+                                      ))),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: mqh * 160 / 2340),
+                      InkWell(
+                        onTap: (){
+                          startTimer1();
+                          playSound(2);
+                        },
+                        child: Center(
+                          child: Container(
+                            height: mqh * 122.5 / 2340,
+                            width: mqw * 60 / 1080,
+                            decoration: BoxDecoration(
+                                color: kBlue, borderRadius: BorderRadius.circular(7)),
+                            child:  Center(
+                                child: Text(
+                                  'Play',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: getResponsiveFontSize(context, 11),
+                                      letterSpacing: 0.5,
+                                      color: kWhite),
+                                )),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: mqh / 50),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: mqh * 1150 / 2340,
-                          width: mqh / 2.5,
-                          decoration: BoxDecoration(
-                              color: kWhite,
-                              borderRadius: BorderRadius.circular(14)),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(14),
-                            child: PageView.builder(
-                                controller: _pageController2,
-                                itemCount: waiting_image.length,
-
-                                onPageChanged: (value){
-                                  setState(() {
-                                    _activePage2 = value;
-                                  });
-                                },
-                                itemBuilder: (context, index) {
-                                  return _pages2[index];
-                                }),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: mqh * 1150 / 2340,
+                            width: mqw * 260 / 1080,
+                            decoration: BoxDecoration(
+                                color: kWhite,
+                                borderRadius: BorderRadius.circular(14)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(14),
+                              child: PageView.builder(
+                                  controller: _pageController2,
+                                  itemCount: waiting_image.length,
+      
+                                  onPageChanged: (value){
+                                    setState(() {
+                                      _activePage2 = value;
+                                    });
+                                  },
+                                  itemBuilder: (context, index) {
+                                    return _pages2[index];
+                                  }),
+                            ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: mqh * 70 / 2340,
-                          child:  Container(
-                            width: mqw * 0.85,
-                            child: Center(
+                          Positioned(
+                            bottom: mqh * 70 / 2340,
+                            left: mqw * 93 / 1080,
+                            child:  Center(
                               child: Text(
                                 'Waiting',
                                 style: TextStyle(
                                     color: kWhite,
                                     fontWeight: FontWeight.w800,
-                                    fontSize: mqh / 35,
+                                    fontSize: getResponsiveFontSize(context, 19),
                                     // letterSpacing: 0.5,
                                     fontFamily: 'Inter'),
                               ),
                             ),
-                          )
-                        ),
-                        Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            width: 300,
-                            // height: 100,
-                            color: Colors.transparent,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List<Widget>.generate(
-                                    _pages2.length,
-                                        (index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: InkWell(
-                                        onTap: () {
-                                          _pageController2.animateToPage(index,
-                                              duration:
-                                              const Duration(milliseconds: 500),
-                                              curve: Curves.easeInOutCubicEmphasized);
-
-                                        },
-                                        child: CircleAvatar(
-                                          radius: 4,
-                                          backgroundColor:
-                                          _activePage2 == index
-                                              ? Colors.transparent
-                                              : Colors.transparent,
-                                        ),
-                                      ),
-                                    ))),
                           ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: mqh / 50),
-                    InkWell(
-                      onTap: (){
-                        startTimer2();
-                        playSound(4);
-                      },
-                      child: Center(
-                        child: Container(
-                          height: mqh * 122.5 / 2340,
-                          width: mqw / 8,
-                          decoration: BoxDecoration(
-                              color: kBlue, borderRadius: BorderRadius.circular(7)),
-                          child:  Center(
-                              child: Text(
-                                'Play',
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: mqh / 65,
-                                    letterSpacing: 0.5,
-                                    color: kWhite),
-                              )),
+                          Positioned(
+                            bottom: 10,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              width: 300,
+                              // height: 100,
+                              color: Colors.transparent,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List<Widget>.generate(
+                                      _pages2.length,
+                                          (index) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: InkWell(
+                                          onTap: () {
+                                            _pageController2.animateToPage(index,
+                                                duration:
+                                                const Duration(milliseconds: 500),
+                                                curve: Curves.easeInOutCubicEmphasized);
+      
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 4,
+                                            backgroundColor:
+                                            _activePage2 == index
+                                                ? Colors.transparent
+                                                : Colors.transparent,
+                                          ),
+                                        ),
+                                      ))),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: mqh * 160 / 2340),
+                      InkWell(
+                        onTap: (){
+                          startTimer2();
+                          playSound(4);
+                        },
+                        child: Center(
+                          child: Container(
+                            height: mqh * 122.5 / 2340,
+                            width: mqw * 60 / 1080,
+                            decoration: BoxDecoration(
+                                color: kBlue, borderRadius: BorderRadius.circular(7)),
+                            child:  Center(
+                                child: Text(
+                                  'Play',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: getResponsiveFontSize(context, 11),
+                                      letterSpacing: 0.5,
+                                      color: kWhite),
+                                )),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: mqh / 50),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Stack(
-                      children: [
-                        Container(
-                          height: mqh * 1150 / 2340,
-                          width: mqh / 2.5,
-                          decoration: BoxDecoration(
-                              color: kWhite,
-                              borderRadius: BorderRadius.circular(14)),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(14),
-                            child: PageView.builder(
-                                controller: _pageController3,
-                                itemCount: uncertainty_image.length,
-
-                                onPageChanged: (value){
-                                  setState(() {
-                                    _activePage3 = value;
-                                  });
-                                },
-                                itemBuilder: (context, index) {
-                                  return _pages3[index];
-                                }),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: mqh * 1150 / 2340,
+                            width: mqw * 260 / 1080,
+                            decoration: BoxDecoration(
+                                color: kWhite,
+                                borderRadius: BorderRadius.circular(14)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(14),
+                              child: PageView.builder(
+                                  controller: _pageController3,
+                                  itemCount: uncertainty_image.length,
+      
+                                  onPageChanged: (value){
+                                    setState(() {
+                                      _activePage3 = value;
+                                    });
+                                  },
+                                  itemBuilder: (context, index) {
+                                    return _pages3[index];
+                                  }),
+                            ),
                           ),
-                        ),
-                        Positioned(
-                          bottom: mqh * 70 / 2340,
-                          child:  Container(
-                            width: mqw * 0.85,
-                            child: Center(
+                          Positioned(
+                            bottom: mqh * 70 / 2340,
+                            right: mqw * 70 / 1080,
+                            child:  Center(
                               child: Text(
                                 'Uncertainty',
                                 style: TextStyle(
                                     color: kWhite,
                                     fontWeight: FontWeight.w800,
-                                    fontSize: mqh / 35,
+                                    fontSize: getResponsiveFontSize(context, 19),
                                     fontFamily: 'Inter'),
                               ),
                             ),
-                          )
-                        ),
-                        Positioned(
-                          bottom: 10,
-                          left: 0,
-                          right: 0,
-                          child: Container(
-                            width: 300,
-                            // height: 100,
-                            color: Colors.transparent,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: List<Widget>.generate(
-                                    _pages3.length,
-                                        (index) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: InkWell(
-                                        onTap: () {
-                                          _pageController3.animateToPage(index,
-                                              duration:
-                                              const Duration(milliseconds: 500),
-                                              curve: Curves.easeInOutCubicEmphasized);
-
-                                        },
-                                        child: CircleAvatar(
-                                          radius: 4,
-                                          backgroundColor:
-                                          _activePage3 == index
-                                              ? Colors.transparent
-                                              : Colors.transparent,
-                                        ),
-                                      ),
-                                    ))),
                           ),
-                        )
-                      ],
-                    ),
-                    SizedBox(height: mqh / 50),
-                    InkWell(
-                      onTap: (){
-                        startTimer3();
-                        playSound(3);
-                      },
-                      child: Center(
-                        child: Container(
-                          height: mqh * 122.5 / 2340,
-                          width: mqw / 8,
-                          decoration: BoxDecoration(
-                              color: kBlue, borderRadius: BorderRadius.circular(7)),
-                          child:  Center(
-                              child: Text(
-                                'Play',
-                                style: TextStyle(
-                                    fontFamily: 'Inter',
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: mqh / 65,
-                                    letterSpacing: 0.5,
-                                    color: kWhite),
-                              )),
+                          Positioned(
+                            bottom: 10,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              width: 300,
+                              // height: 100,
+                              color: Colors.transparent,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List<Widget>.generate(
+                                      _pages3.length,
+                                          (index) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: InkWell(
+                                          onTap: () {
+                                            _pageController3.animateToPage(index,
+                                                duration:
+                                                const Duration(milliseconds: 500),
+                                                curve: Curves.easeInOutCubicEmphasized);
+      
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 4,
+                                            backgroundColor:
+                                            _activePage3 == index
+                                                ? Colors.transparent
+                                                : Colors.transparent,
+                                          ),
+                                        ),
+                                      ))),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: mqh * 160 / 2340),
+                      InkWell(
+                        onTap: (){
+                          startTimer3();
+                          playSound(3);
+                        },
+                        child: Center(
+                          child: Container(
+                            height: mqh * 122.5 / 2340,
+                            width: mqw * 60 / 1080,
+                            decoration: BoxDecoration(
+                                color: kBlue, borderRadius: BorderRadius.circular(7)),
+                            child:  Center(
+                                child: Text(
+                                  'Play',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: getResponsiveFontSize(context, 11),
+                                      letterSpacing: 0.5,
+                                      color: kWhite),
+                                )),
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(height: mqh / 50),
-                  ],
-                ),
-
-              ],
+                    ],
+                  ),
+                  SizedBox(height: mqh * 0.8),
+                ],
+              ) :
+              Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: mqh * 1050 / 2340,
+                            width: mqh / 2.45,
+                            decoration: BoxDecoration(
+                                color: kWhite,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: PageView.builder(
+                                  controller: _pageController1,
+                                  itemCount: discoverability_image.length,
+      
+                                  onPageChanged: (value){
+                                    setState(() {
+                                      _activePage1 = value;
+                                    });
+                                  },
+                                  itemBuilder: (context, index) {
+                                    return _pages1[index];
+                                  }),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: mqh * 70 / 2340,
+      
+                            child:  Container(
+                              width: mqh / 2.45,
+                              child: Center(
+                                child: Text(
+                                  'Discoverability',
+                                  style: TextStyle(
+                                      color: kWhite,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: mqh / 30,
+                                      // letterSpacing: 0.5,
+                                      fontFamily: 'Inter'),
+                                ),
+                              ),
+                            )
+                          ),
+                          Positioned(
+                            bottom: 10,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              width: 300,
+                              // height: 100,
+                              color: Colors.transparent,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List<Widget>.generate(
+                                      _pages1.length,
+                                          (index) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: InkWell(
+                                          onTap: () {
+                                            _pageController1.animateToPage(index,
+                                                duration:
+                                                const Duration(milliseconds: 500),
+                                                curve: Curves.easeInOutCubicEmphasized);
+      
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 4,
+                                            backgroundColor:
+                                            _activePage1 == index
+                                                ? Colors.transparent
+                                                : Colors.transparent,
+                                          ),
+                                        ),
+                                      ))),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: mqh / 25),
+                      InkWell(
+                        onTap: (){
+                          startTimer1();
+                          playSound(2);
+                        },
+                        child: Center(
+                          child: Container(
+                            height: mqh * 110 / 2340,
+                            width: mqh / 10,
+                            decoration: BoxDecoration(
+                                color: kBlue, borderRadius: BorderRadius.circular(5.5)),
+                            child:  Center(
+                                child: Text(
+                                  'Play',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: mqh / 45,
+                                      letterSpacing: 0.5,
+                                      color: kWhite),
+                                )),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: mqh / 15),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: mqh * 1050 / 2340,
+                            width: mqh / 2.45,
+                            decoration: BoxDecoration(
+                                color: kWhite,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: PageView.builder(
+                                  controller: _pageController2,
+                                  itemCount: waiting_image.length,
+      
+                                  onPageChanged: (value){
+                                    setState(() {
+                                      _activePage2 = value;
+                                    });
+                                  },
+                                  itemBuilder: (context, index) {
+                                    return _pages2[index];
+                                  }),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: mqh * 70 / 2340,
+                            child:  Container(
+                              width: mqh / 2.45,
+                              child: Center(
+                                child: Text(
+                                  'Waiting',
+                                  style: TextStyle(
+                                      color: kWhite,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: mqh / 30,
+                                      // letterSpacing: 0.5,
+                                      fontFamily: 'Inter'),
+                                ),
+                              ),
+                            )
+                          ),
+                          Positioned(
+                            bottom: 10,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              width: 300,
+                              // height: 100,
+                              color: Colors.transparent,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List<Widget>.generate(
+                                      _pages2.length,
+                                          (index) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: InkWell(
+                                          onTap: () {
+                                            _pageController2.animateToPage(index,
+                                                duration:
+                                                const Duration(milliseconds: 500),
+                                                curve: Curves.easeInOutCubicEmphasized);
+      
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 4,
+                                            backgroundColor:
+                                            _activePage2 == index
+                                                ? Colors.transparent
+                                                : Colors.transparent,
+                                          ),
+                                        ),
+                                      ))),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: mqh / 25),
+                      InkWell(
+                        onTap: (){
+                          startTimer2();
+                          playSound(4);
+                        },
+                        child: Center(
+                          child: Container(
+                            height: mqh * 110 / 2340,
+                            width: mqh / 10,
+                            decoration: BoxDecoration(
+                                color: kBlue, borderRadius: BorderRadius.circular(5.5)),
+                            child:  Center(
+                                child: Text(
+                                  'Play',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: mqh / 45,
+                                      letterSpacing: 0.5,
+                                      color: kWhite),
+                                )),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: mqh / 15),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Stack(
+                        children: [
+                          Container(
+                            height: mqh * 1050 / 2340,
+                            width: mqh / 2.45,
+                            decoration: BoxDecoration(
+                                color: kWhite,
+                                borderRadius: BorderRadius.circular(15)),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: PageView.builder(
+                                  controller: _pageController3,
+                                  itemCount: uncertainty_image.length,
+      
+                                  onPageChanged: (value){
+                                    setState(() {
+                                      _activePage3 = value;
+                                    });
+                                  },
+                                  itemBuilder: (context, index) {
+                                    return _pages3[index];
+                                  }),
+                            ),
+                          ),
+                          Positioned(
+                            bottom: mqh * 70 / 2340,
+                            child:  Container(
+                              width: mqh / 2.5,
+                              child: Center(
+                                child: Text(
+                                  'Uncertainty',
+                                  style: TextStyle(
+                                      color: kWhite,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: mqh / 30,
+                                      fontFamily: 'Inter'),
+                                ),
+                              ),
+                            )
+                          ),
+                          Positioned(
+                            bottom: 10,
+                            left: 0,
+                            right: 0,
+                            child: Container(
+                              width: 300,
+                              // height: 100,
+                              color: Colors.transparent,
+                              child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List<Widget>.generate(
+                                      _pages3.length,
+                                          (index) => Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 5),
+                                        child: InkWell(
+                                          onTap: () {
+                                            _pageController3.animateToPage(index,
+                                                duration:
+                                                const Duration(milliseconds: 500),
+                                                curve: Curves.easeInOutCubicEmphasized);
+      
+                                          },
+                                          child: CircleAvatar(
+                                            radius: 4,
+                                            backgroundColor:
+                                            _activePage3 == index
+                                                ? Colors.transparent
+                                                : Colors.transparent,
+                                          ),
+                                        ),
+                                      ))),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(height: mqh / 25),
+                      InkWell(
+                        onTap: (){
+                          startTimer3();
+                          playSound(3);
+                        },
+                        child: Center(
+                          child: Container(
+                            height: mqh * 110 / 2340,
+                            width: mqh / 10,
+                            decoration: BoxDecoration(
+                                color: kBlue, borderRadius: BorderRadius.circular(5.5)),
+                            child:  Center(
+                                child: Text(
+                                  'Play',
+                                  style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: mqh / 45,
+                                      letterSpacing: 0.5,
+                                      color: kWhite),
+                                )),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: mqh / 15),
+                    ],
+                  ),
+      
+                ],
+              ),
             ),
-          ),
-
-        ],
+      
+          ],
+        ),
       ),
     );
   }

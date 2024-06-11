@@ -56,6 +56,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+    - images/Restaurants-and-Malls.jpg
     - images/In-Blue-48.png
     - assets/Ofline_1.wav
     - assets/Ofline_2.wav

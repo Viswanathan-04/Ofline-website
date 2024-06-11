@@ -2,17 +2,18 @@ import 'dart:async';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ofline_web/myhome.dart';
 import 'package:ofline_web/pages/all_screens.dart';
 import 'package:ofline_web/utility/color.dart';
 
 
 void main() async{
   SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-      statusBarColor: kWhite,
-      statusBarIconBrightness: Brightness.dark,
-      statusBarBrightness: Brightness.dark,
-      systemNavigationBarColor: kWhite,
-      systemNavigationBarIconBrightness: Brightness.dark));
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.light,
+      systemNavigationBarColor: Colors.transparent,
+      systemNavigationBarIconBrightness: Brightness.light));
   runApp(const OflineWeb());
 }
 
@@ -35,7 +36,7 @@ class _OflineWebState extends State<OflineWeb> {
           fontFamily: 'Inter'
       ),
       title: 'Ofline',
-      home: const All_Screens(),
+      home: MediaQuery.of(context).size.width > 768 ? MyHomePage() : All_Screens(),
     );
   }
 }

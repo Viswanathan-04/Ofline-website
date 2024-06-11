@@ -43,8 +43,8 @@ class _First_ScreeenState extends State<First_Screeen> {
             onTap: (){
               playSound(1);
             },
-            child: Image.network(
-                'https://images.unsplash.com/photo-1586366775916-7018ef19ff34?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+            child: Image.asset(
+              'images/Restaurants-and-Malls.jpg',
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.cover),
@@ -60,7 +60,7 @@ class _First_ScreeenState extends State<First_Screeen> {
                           letterSpacing: 1.5,
                           color: kWhite,
                           fontWeight: FontWeight.w900,
-                          fontSize: mqh / 24)),
+                          fontSize: mqh / 25)),
                 ),
               )
           ),
@@ -74,7 +74,7 @@ class _First_ScreeenState extends State<First_Screeen> {
                           fontFamily: 'Inter',
                           color: kWhite,
                           letterSpacing: 1,
-                          fontWeight: FontWeight.w700,
+                          fontWeight: FontWeight.w800,
                           fontSize: mqh / 32)
                   ),
                 ),
@@ -90,8 +90,8 @@ class _First_ScreeenState extends State<First_Screeen> {
                       playSound(5);
                     },
                     child: Container(
-                      height: mqh * 120 / 2340,
-                      width: mqh / 9,
+                      height: mqh * 110 / 2340,
+                      width: mqh / 10,
                       decoration: BoxDecoration(
                           color: kBlue, borderRadius: BorderRadius.circular(6)),
                       child:  Center(

@@ -37,19 +37,20 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                 'FAQ',
                 style: TextStyle(
                     fontFamily: 'Inter',
-                    color: kBlue, fontWeight: FontWeight.w900, fontSize: mqh / 19),
+                    color: kBlue, fontWeight: FontWeight.w900, fontSize: mqw > 768 ? mqh / 22 : mqh / 26),
                            ),
              ),
             mqw > 768 ? SizedBox(height: mqh * 150 / 2340): SizedBox(height: mqh / 2340,),
             Expanded(
               child: ListView.builder(
+
                   itemCount: QA.qa.length,
                   itemBuilder: (context, index) {
                     return Center(
                       child: Padding(
                         padding: EdgeInsets.symmetric(
-                            vertical: mqh * 55 / 2340,
-                            horizontal: mqw * 120 / 1080),
+                            vertical: mqh * 50 / 2340,
+                            horizontal: mqw > 768 ? mqw * 120 / 1080 : mqw * 60 / 1080),
                         child: ExpansionTile(
                           initiallyExpanded: _isExpanded == index,
                           collapsedIconColor: kBlue,
@@ -60,24 +61,24 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                                 fontFamily: 'Inter',
                                 color: kBlue,
                                 fontWeight: FontWeight.w600,
-                                fontSize: mqw > 768 ? mqh / 35 : mqh / 45),
+                                fontSize: mqw > 768 ? mqh / 35 : mqh / 43),
                           ),
                           children: [
                             Container(
                               width: double.infinity,
                               child:  Padding(
-                                padding:  EdgeInsets.symmetric(horizontal: mqw*15/1080),
+                                padding:  EdgeInsets.symmetric(horizontal: mqw > 768 ? mqh / 35 : mqh / 43),
                                 child: Text(
                                   QA.qa[index].answer,
                                   style:  TextStyle(
                                       fontFamily: 'Inter',
                                       color: kGrey,
                                       fontWeight: FontWeight.w500,
-                                      fontSize: mqw > 768 ? mqh / 35 : mqh / 45),
+                                      fontSize: mqw > 768 ? mqh / 40 : mqh / 49),
                                 ),
                               ),
                             ),
-                            SizedBox(height: mqh / 10,)
+                            SizedBox(height: mqh / 20,)
                           ],
                         ),
                       ),
