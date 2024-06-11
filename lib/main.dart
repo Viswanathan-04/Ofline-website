@@ -32,12 +32,10 @@ class _OflineWebState extends State<OflineWeb> {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        fontFamily: 'Inter'
+          fontFamily: 'Inter'
       ),
       title: 'Ofline',
       home: const All_Screens(),
     );
   }
 }
-
-

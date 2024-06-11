@@ -162,13 +162,13 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                       fontFamily: 'Inter',
                       color: kBlue,
                       fontWeight: FontWeight.w900,
-                      fontSize: mqh / 14),
+                      fontSize: mqw > 768 ? mqh / 14 : mqh / 20),
                 )),
           ),
           SizedBox(height: mqh / 30),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: mqw * 50 / 1080),
-            child: mqw > 768 ? Row(
+            child: mqw >= 768 ? Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SizedBox(width: 0,),
@@ -495,7 +495,7 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                       children: [
                         Container(
                           height: mqh * 1150 / 2340,
-                          width: mqw / 1.5,
+                          width: mqh / 2.5,
                           decoration: BoxDecoration(
                               color: kWhite,
                               borderRadius: BorderRadius.circular(14)),
@@ -518,7 +518,7 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                         Positioned(
                           bottom: mqh * 70 / 2340,
                           child:  Container(
-                            width: mqw * 0.65,
+                            width: mqw * 0.85,
                             child: Center(
                               child: Text(
                                 'Discoverability',
@@ -602,7 +602,7 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                       children: [
                         Container(
                           height: mqh * 1150 / 2340,
-                          width: mqw / 1.5,
+                          width: mqh / 2.5,
                           decoration: BoxDecoration(
                               color: kWhite,
                               borderRadius: BorderRadius.circular(14)),
@@ -625,7 +625,7 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                         Positioned(
                           bottom: mqh * 70 / 2340,
                           child:  Container(
-                            width: mqw * 0.65,
+                            width: mqw * 0.85,
                             child: Center(
                               child: Text(
                                 'Waiting',
@@ -709,7 +709,7 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                       children: [
                         Container(
                           height: mqh * 1150 / 2340,
-                          width: mqw / 1.5,
+                          width: mqh / 2.5,
                           decoration: BoxDecoration(
                               color: kWhite,
                               borderRadius: BorderRadius.circular(14)),
@@ -732,7 +732,7 @@ class _Problem_ScreenState extends State<Problem_Screen> {
                         Positioned(
                           bottom: mqh * 70 / 2340,
                           child:  Container(
-                            width: mqw * 0.65,
+                            width: mqw * 0.85,
                             child: Center(
                               child: Text(
                                 'Uncertainty',

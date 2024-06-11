@@ -40,7 +40,7 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                     color: kBlue, fontWeight: FontWeight.w900, fontSize: mqh / 19),
                            ),
              ),
-            SizedBox(height: mqh * 150 / 2340),
+            mqw > 768 ? SizedBox(height: mqh * 150 / 2340): SizedBox(height: mqh / 2340,),
             Expanded(
               child: ListView.builder(
                   itemCount: QA.qa.length,
@@ -60,7 +60,7 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                                 fontFamily: 'Inter',
                                 color: kBlue,
                                 fontWeight: FontWeight.w600,
-                                fontSize: mqh / 35),
+                                fontSize: mqw > 768 ? mqh / 35 : mqh / 45),
                           ),
                           children: [
                             Container(
@@ -73,7 +73,7 @@ class _FAQ_ScreenState extends State<FAQ_Screen> {
                                       fontFamily: 'Inter',
                                       color: kGrey,
                                       fontWeight: FontWeight.w500,
-                                      fontSize: mqh / 40),
+                                      fontSize: mqw > 768 ? mqh / 35 : mqh / 45),
                                 ),
                               ),
                             ),

@@ -44,7 +44,7 @@ class _First_ScreeenState extends State<First_Screeen> {
               playSound(1);
             },
             child: Image.network(
-              'https://images.unsplash.com/photo-1586366775916-7018ef19ff34?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+                'https://images.unsplash.com/photo-1586366775916-7018ef19ff34?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.cover),
@@ -81,33 +81,33 @@ class _First_ScreeenState extends State<First_Screeen> {
               )
           ),
           Positioned(
-            top: mqh * 2010 / 2340,
-            child: Container(
-              width: mqw,
-              child: Center(
-                child: InkWell(
-                  onTap: (){
-                    playSound(5);
-                  },
-                  child: Container(
-                    height: mqh * 120 / 2340,
-                    width: mqh / 9,
-                    decoration: BoxDecoration(
-                        color: kBlue, borderRadius: BorderRadius.circular(6)),
-                    child:  Center(
-                        child: Text(
-                          'App',
-                          style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontWeight: FontWeight.w800,
-                              fontSize: mqh / 50,
-                              letterSpacing: 1,
-                              color: kWhite),
-                        )),
+              top: mqh * 2010 / 2340,
+              child: Container(
+                width: mqw,
+                child: Center(
+                  child: InkWell(
+                    onTap: (){
+                      playSound(5);
+                    },
+                    child: Container(
+                      height: mqh * 120 / 2340,
+                      width: mqh / 9,
+                      decoration: BoxDecoration(
+                          color: kBlue, borderRadius: BorderRadius.circular(6)),
+                      child:  Center(
+                          child: Text(
+                            'App',
+                            style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontWeight: FontWeight.w800,
+                                fontSize: mqh / 50,
+                                letterSpacing: 1,
+                                color: kWhite),
+                          )),
+                    ),
                   ),
                 ),
-              ),
-            )
+              )
           ),
         ],
       ),
